@@ -86,7 +86,7 @@ const ListingCard: React.FC<listingCardProps> = ({
         </Box>
       </Box>
       <Box px={4}>
-        <Text fontSize={12} fontWeight={"semibold"}>
+        <Text fontSize={12} fontWeight={"semibold"} color={'text.quaternary'}>
           {listing.unit.name.length > 40
             ? `${listing.unit.name.substring(0, 40)}...`
             : listing.unit.name}

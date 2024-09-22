@@ -14,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   return (
     <HStack spacing={4}>
-      <Button
+        <Button bg={'primary.40'} color={'text.quaternary'}
         onClick={() =>
           onChange("page", PaginationDetails ? PaginationDetails.page - 1 : 0)
         }
@@ -23,11 +23,11 @@ const Pagination: React.FC<PaginationProps> = ({
         Previous
       </Button>
 
-      <Text>
+      <Text color={'text.quaternary'}>
         Page {PaginationDetails?.page} of {PaginationDetails?.totalPages}
       </Text>
 
-      <Button
+      <Button bg={'primary.40'} color={'text.quaternary'}
         onClick={() =>
           onChange("page", PaginationDetails ? PaginationDetails.page + 1 : 0)
         }

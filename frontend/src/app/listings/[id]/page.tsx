@@ -84,11 +84,11 @@ const ListingPage = async ({ params }: Props) => {
       >
         {icon && (
           <Box w={5} h={5}>
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon icon={icon} color={'black'} />
           </Box>
         )}
-        <Text fontSize={20}>
-          <Text as="span" fontWeight="bold">
+        <Text color={'text.quaternary'} fontSize={20}>
+          <Text as="span" fontWeight="bold" >
             {key}
           </Text>
           : {value}
@@ -115,7 +115,7 @@ const ListingPage = async ({ params }: Props) => {
           alignItems={"center"}
           gap={2}
         >
-          <Text fontWeight={"semibold"} fontSize={20}>
+          <Text color={'text.quaternary'}fontWeight={"semibold"} fontSize={20}>
             {listing?.unit.name},
           </Text>
           <Text fontWeight={"semibold"} fontSize={12} color={"text.tertiary"}>
@@ -132,7 +132,7 @@ const ListingPage = async ({ params }: Props) => {
       </Box>
       <ImageCarousal images={listing?.unit.imageUrls} />
       <DetailsCard title={"Description"}>
-        <Text fontSize={20} fontWeight={"normal"}>
+        <Text color={'text.quaternary'} fontSize={20} fontWeight={"normal"}>
           {listing?.description}
         </Text>
       </DetailsCard>
@@ -151,7 +151,7 @@ const ListingPage = async ({ params }: Props) => {
              <Box w={5} h={5}>
             <FontAwesomeIcon icon={IncludedIcon} />
           </Box>
-            <Text fontSize={20} fontWeight={"normal"}>
+            <Text color={'text.quaternary'} fontSize={20} fontWeight={"normal"}>
               {amenity.name}
             </Text>
           </Box>

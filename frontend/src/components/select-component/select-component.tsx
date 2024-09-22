@@ -33,6 +33,8 @@ const Select: React.FC<BedsSelectProps> = ({
       w={width}
       value={value ?? -1}
       borderRadius={30}
+      color='text.quaternary'
+      borderColor={'primary.40'}
       borderWidth={borderWidth}
       onChange={(e) => onChange(keyToUpdate, e.target.value)}
     >

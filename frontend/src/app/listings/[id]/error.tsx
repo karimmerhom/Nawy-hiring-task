@@ -18,10 +18,10 @@ export default function Error({
   return (
     <Container display={'flex'} justifyContent={'center'} textAlign={'center'} alignItems="center" h={500} py={10}>
       <Box>
-        <Heading as="h1" size="2xl" mb={4}>
+        <Heading color={'text.quaternary'} as="h1" size="2xl" mb={4}>
         Failed to Load Ad details
         </Heading>
-        <Text fontSize="lg" mb={6}>
+        <Text color={'text.quaternary'} fontSize="lg" mb={6}>
             An error occurred sorry for the inconvenience please try again later.
         </Text>
         <Link href="/">

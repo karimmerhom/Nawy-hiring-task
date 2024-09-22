@@ -18,6 +18,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onChange, query, setQ
       <Input
         bg={"primary.100"}
         borderWidth={1}
+        borderColor={'primary.40'}
+        color={'text.quaternary'}
+        _placeholder={{ color: 'text.tertiary' }}
         placeholder="Search by Ref#, Ad title or Description..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}

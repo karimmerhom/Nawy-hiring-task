@@ -19,7 +19,7 @@ const DetailsCard: React.FC<CardProps> = ({ title, children }) => {
         px={5}
         borderRadius={10}
       >
-        <Text fontSize={20} fontWeight={"bold"}>
+        <Text fontSize={20} fontWeight={"bold"} color={'text.quaternary'}>
           {title}
         </Text>
       </Box>

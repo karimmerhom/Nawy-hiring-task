@@ -90,7 +90,7 @@ export default function Listings() {
 
   return (
     <Box bg={"primary.100"} width="100%" flexDir={"column"} paddingX={5}>
-      <Text pt={5} fontWeight={"semibold"} fontSize={20}>
+      <Text pt={5} fontWeight={"semibold"} fontSize={20}  color={'text.quaternary'}>
         {paginationDetails?.total ?? 0} Results Found
       </Text>
 
@@ -149,6 +149,7 @@ export default function Listings() {
         />
         {Object.keys(listingsOptions).length > 2 && (
           <Text
+            color={'text.quaternary'}
             fontSize={15}
             textDecoration="underline"
             cursor={"pointer"}
@@ -197,7 +198,7 @@ export default function Listings() {
                 width={300}
                 height={300}
               />
-              <Text fontWeight={"bold"}>
+              <Text color={'text.quaternary'} fontWeight={"bold"}>
                 Sorry, we could not find any matching ads...
               </Text>
             </>
