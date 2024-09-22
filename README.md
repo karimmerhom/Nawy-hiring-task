@@ -20,6 +20,8 @@ This repository contains an apartment listing application built as part of a hir
 
 ## Getting Started
 
+To run the application locally without using Docker, Make sure docker eniroment varibale is set to FALSE in frontend.
+
 To run the application locally using Docker, ensure that Docker and Docker Compose are installed on your machine. You can download them from [Docker's official website](https://www.docker.com/get-started).
 
 Once you have Docker set up, you can run the application with the following command:
@@ -27,4 +29,4 @@ Once you have Docker set up, you can run the application with the following comm
 ```bash
 docker-compose up --build
 
-###To run the application locally without using Docker, Make sure docker eniroment varibale is set to FALSE in frontend.
+
