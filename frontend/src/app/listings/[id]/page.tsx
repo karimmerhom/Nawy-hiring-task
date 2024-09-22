@@ -110,7 +110,7 @@ const ListingPage = async ({ params }: Props) => {
 
       <DetailsCard title={"Details"}>
         {detail("Project", listing?.unit.project.name)}
-        {detail("Ref Number #", listing?.unit.number)}
+        {detail("Ref Number #", listing?.unit.refNumber)}
         {detail("Type", listing?.unit.unitType)}
         {detail("Area", `${listing?.unit.area} m²`)}
         {detail("Bedrooms", listing?.unit.bedrooms)}
