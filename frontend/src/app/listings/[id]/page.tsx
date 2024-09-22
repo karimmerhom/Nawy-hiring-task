@@ -149,7 +149,7 @@ const ListingPage = async ({ params }: Props) => {
             alignItems={"center"}
           >
              <Box w={5} h={5}>
-            <FontAwesomeIcon icon={IncludedIcon} />
+            <FontAwesomeIcon icon={IncludedIcon} color={'black'} />
           </Box>
             <Text color={'text.quaternary'} fontSize={20} fontWeight={"normal"}>
               {amenity.name}
