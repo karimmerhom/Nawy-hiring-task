@@ -14,9 +14,16 @@ type Props = {
 const ListingPage = async ({ params }: Props) => {
   const { id } = params;
 
-  let res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}listing/${id}`, {
-    cache: "force-cache",
-  });
+  let res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_DOCKER  === "TRUE"
+        ? process.env.NEXT_PUBLIC_SERVER_URL_DOCKER
+        : process.env.NEXT_PUBLIC_SERVER_URL
+    }listing/${id}`,
+    {
+      cache: "force-cache",
+    }
+  );
   let body = await res.json();
   const listing = body.listing;
   if (!res.ok) {
