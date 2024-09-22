@@ -16,7 +16,6 @@ import Pagination from "@/components/pagination-component/pagination-component";
 
 
 export default function Listings() {
-  console.log( process.env.NEXT_PUBLIC_DOCKER)
   const [loading, setLoading] = useState<boolean>(true);
   const [listings, setListings] = useState<IListing[]>([]);
   const [projects, setProjects] = useState<IProject[]>([]);

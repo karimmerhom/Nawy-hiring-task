@@ -2,6 +2,22 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { formatPrice } from "@/helpers/currency-format";
 import { IAmenity } from "@/app/models/interfaces/amenity.interface";
+import {
+  faUser as UserIcon,
+  faEnvelope as EmailIcon,
+  faPhone as PhoneIcon,
+  faBed as BedIcon,
+  faBath as BathIcon,
+  faExpand as AreaIcon,
+  faBuilding as BuildingIcon,
+  faHouse as HouseIcon,
+  faIdCardClip as RefNumberIcon,
+  faPeopleGroup as ProjectIocn,
+  faCheck as IncludedIcon,
+  IconDefinition,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import ImageCarousal from "@/components/imgae-carousal/image-carousal";
 import TagsBox from "@/components/detailed-ad-tags/detaild-ad-tag";
 import DetailsCard from "@/components/detail-card/detail-card";
@@ -16,7 +32,7 @@ const ListingPage = async ({ params }: Props) => {
 
   let res = await fetch(
     `${
-      process.env.NEXT_PUBLIC_DOCKER  === "TRUE"
+      process.env.NEXT_PUBLIC_DOCKER === "TRUE"
         ? process.env.NEXT_PUBLIC_SERVER_URL_DOCKER
         : process.env.NEXT_PUBLIC_SERVER_URL
     }listing/${id}`,
@@ -29,7 +45,33 @@ const ListingPage = async ({ params }: Props) => {
   if (!res.ok) {
     throw new Error("Failed to Load Ad details");
   }
-  function detail(key: string, value: string | number) {
+  interface IconMap {
+    Apartment: IconDefinition;
+    Villa: IconDefinition;
+    Townhouse: IconDefinition;
+    Studio: IconDefinition;
+    Duplex: IconDefinition;
+    Penthouse: IconDefinition;
+  }
+
+  type UnitType =
+    | "Apartment"
+    | "Villa"
+    | "Townhouse"
+    | "Studio"
+    | "Duplex"
+    | "Penthouse";
+
+  const typeToIcon: IconMap = {
+    Apartment: BuildingIcon,
+    Villa: HouseIcon,
+    Townhouse: HouseIcon,
+    Studio: BuildingIcon,
+    Duplex: BuildingIcon,
+    Penthouse: BuildingIcon,
+  };
+
+  function detail(key: string, value: string | number, icon: IconProp | null) {
     return (
       <Box
         display={"flex"}
@@ -40,6 +82,11 @@ const ListingPage = async ({ params }: Props) => {
         width={"30%"}
         alignItems={"center"}
       >
+        {icon && (
+          <Box w={5} h={5}>
+            <FontAwesomeIcon icon={icon} />
+          </Box>
+        )}
         <Text fontSize={20}>
           <Text as="span" fontWeight="bold">
             {key}
@@ -101,26 +148,34 @@ const ListingPage = async ({ params }: Props) => {
             width={"33%"}
             alignItems={"center"}
           >
+             <Box w={5} h={5}>
+            <FontAwesomeIcon icon={IncludedIcon} />
+          </Box>
             <Text fontSize={20} fontWeight={"normal"}>
               {amenity.name}
             </Text>
           </Box>
+        
         ))}
       </DetailsCard>
 
       <DetailsCard title={"Details"}>
-        {detail("Project", listing?.unit.project.name)}
-        {detail("Ref Number #", listing?.unit.refNumber)}
-        {detail("Type", listing?.unit.unitType)}
-        {detail("Area", `${listing?.unit.area} m²`)}
-        {detail("Bedrooms", listing?.unit.bedrooms)}
-        {detail("Bathroom", listing?.unit.bathrooms)}
+        {detail("Project", listing?.unit.project.name, ProjectIocn)}
+        {detail("Ref Number #", listing?.unit.refNumber, RefNumberIcon)}
+        {detail(
+          "Type",
+          listing?.unit.unitType,
+          listing ? typeToIcon[listing.unit.unitType as UnitType] : null
+        )}
+        {detail("Area", `${listing?.unit.area} m²`, AreaIcon)}
+        {detail("Bedrooms", listing?.unit.bedrooms, BedIcon)}
+        {detail("Bathroom", listing?.unit.bathrooms, BathIcon)}
       </DetailsCard>
 
       <DetailsCard title={"Owner Details"}>
-        {detail("Name", listing?.seller.name)}
-        {detail("Phone Number", listing?.seller.phoneNumber)}
-        {detail("Email", listing?.seller.email)}
+        {detail("Name", listing?.seller.name, UserIcon)}
+        {detail("Phone Number", listing?.seller.phoneNumber, PhoneIcon)}
+        {detail("Email", listing?.seller.email, EmailIcon)}
       </DetailsCard>
     </Box>
   );
