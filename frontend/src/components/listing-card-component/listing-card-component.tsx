@@ -1,61 +1,39 @@
 import React, { useContext } from "react";
 import { Box, Text } from "@chakra-ui/react";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
   faLocationDot as LocationIcon,
   faBed as BedIcon,
   faBath as BathIcon,
   faExpand as AreaIcon,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 import { ThemeContext } from "@/context/theme";
 import { formatPrice } from "@/helpers/currency-format";
-import {IListing} from "@/app/models/interfaces/listing.interface";
+import { IListing } from "@/app/models/interfaces/listing.interface";
+import IconBox from "../icon-box/icon-box";
+import AdTag from "../ad-tag/ad-tag";
+import Image from "next/image";
 
-interface listingCardProps{
-  listing:IListing,
-  isNonMobile:boolean,
-  key:string
+interface listingCardProps {
+  listing: IListing;
+  isNonMobile: boolean;
+  key: string;
 }
-const ListingCard: React.FC<listingCardProps> = ({ listing, isNonMobile,key }) => {
+const ListingCard: React.FC<listingCardProps> = ({
+  listing,
+  isNonMobile,
+  key,
+}) => {
   const themeCtx = useContext(ThemeContext);
-
-  function iconBox(icon: IconProp, value: number|string) {
-    return (
-      <Box
-        bg={"primary.40"}
-        display={"flex"}
-        flexDir={"row-reverse"}
-        gap={1}
-        borderRadius={2}
-        alignItems={"center"}
-        px={1}
-      >
-        <FontAwesomeIcon
-          icon={icon}
-          size={"2xs"}
-          color={themeCtx?.theme.colors.text.tertiary}
-        />
-        <Text fontSize={12} fontWeight={"bold"} color={"text.tertiary"}>
-          {value}
-        </Text>
-      </Box>
-    );
-  }
-
-  function adTags(backgroundColor: string, textColor: string, text: string) {
-    return (
-      <Box bg={backgroundColor} borderRadius={5} px={2} py={1}>
-        <Text fontSize={12} color={textColor} fontWeight="bold">
-          {text}
-        </Text>
-      </Box>
-    );
-  }
+  const router = useRouter();
 
   return (
     <Box
+      cursor={"pointer"}
+      onClick={() => {
+        router.push(`/listings/${listing._id}`);
+      }}
       key={key}
       w={isNonMobile ? "23.5%" : "100%"}
       minW={300}
@@ -75,10 +53,28 @@ const ListingCard: React.FC<listingCardProps> = ({ listing, isNonMobile,key }) =
         position="relative"
       >
         <Box h={200}>
-          <Box position={"absolute"} display={'flex'} gap={2} flexDir={'row-reverse'} top={2} right={2} zIndex={1}>
-            {adTags("primary.60", "text.secondary", listing.adType)}
+          <Box
+            position={"absolute"}
+            display={"flex"}
+            gap={2}
+            flexDir={"row-reverse"}
+            top={2}
+            right={2}
+            zIndex={1}
+          >
+            <AdTag
+              backgroundColor={"primary.60"}
+              textColor={"text.secondary"}
+              text={listing.adType}
+              themeCtx={themeCtx}
+            />
             {listing.featured && (
-              <>{adTags("primary.80", "text.secondary", "Featured")}</>
+              <AdTag
+                backgroundColor={"primary.80"}
+                textColor={"text.secondary"}
+                text={"Featured"}
+                themeCtx={themeCtx}
+              />
             )}
           </Box>
           <Image
@@ -96,7 +92,8 @@ const ListingCard: React.FC<listingCardProps> = ({ listing, isNonMobile,key }) =
             : listing.unit.name}
         </Text>
         <Text fontSize={15} color={"text.primary"} pt={2}>
-        {`${formatPrice(listing.price)}`} {listing.rentType? '/ '+listing.rentType:''}
+          {`${formatPrice(listing.price)}`}{" "}
+          {listing.rentType ? "/ " + listing.rentType : ""}
         </Text>
         <Box
           display={"flex"}
@@ -120,9 +117,21 @@ const ListingCard: React.FC<listingCardProps> = ({ listing, isNonMobile,key }) =
             </Text>
           </Box>
           <Box gap={1} flexDir={"row"} display={"flex"}>
-            {iconBox(AreaIcon, `${listing.unit.area} m²`)}
-            {iconBox(BedIcon, listing.unit.bedrooms)}
-            {iconBox(BathIcon, listing.unit.bathrooms)}
+            <IconBox
+              icon={AreaIcon}
+              value={`${listing.unit.area} m²`}
+              themeCtx={themeCtx}
+            />
+            <IconBox
+              icon={BedIcon}
+              value={listing.unit.bedrooms}
+              themeCtx={themeCtx}
+            />
+            <IconBox
+              icon={BathIcon}
+              value={listing.unit.bathrooms}
+              themeCtx={themeCtx}
+            />
           </Box>
         </Box>
       </Box>

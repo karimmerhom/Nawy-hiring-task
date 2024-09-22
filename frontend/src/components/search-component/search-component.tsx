@@ -1,11 +1,13 @@
 import React from "react";
 import { Input, Button, Text, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons'; 
+import { SearchIcon } from '@chakra-ui/icons';
+
 interface SearchComponentProps {
   onChange: (key: string, value: string) => void;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
+
 const SearchComponent: React.FC<SearchComponentProps> = ({ onChange, query, setQuery }) => {
   return (
     <>

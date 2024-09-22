@@ -1,11 +1,9 @@
 'use client';
-
 import { ReactNode } from "react";
 import { Providers } from "./providers";
 import { ThemeProvider } from "@/context/theme";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 interface RootLayoutProps {
   children: ReactNode;

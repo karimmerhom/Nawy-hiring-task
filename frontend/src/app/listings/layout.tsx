@@ -1,8 +1,9 @@
 "use client";
 import { ReactNode } from "react";
-import Image from "next/image";
 import { Box } from "@chakra-ui/layout";
 import { useRouter } from "next/navigation";
+
+import Image from "next/image";
 
 interface ListingsLayoutProps {
   children: ReactNode;

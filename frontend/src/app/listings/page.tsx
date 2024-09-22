@@ -1,20 +1,18 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { getListings, ListingsOptionsRequest } from "@/network/listings";
 import { getProjects } from "@/network/filter-options";
 import { Box, Text } from "@chakra-ui/layout";
 import { useMediaQuery, Spinner } from "@chakra-ui/react";
+import {PaginationDetails} from "@/app/models/interfaces/pagination-details.interface";
+import {IListing} from "@/app/models/interfaces/listing.interface";
+import {IProject} from "@/app/models/interfaces/project.interface";
 import Image from "next/image";
 import Select from "@/components/select-component/select-component";
 import Search from "@/components/search-component/search-component";
 import ListingCard from "@/components/listing-card-component/listing-card-component";
 import Pagination from "@/components/pagination-component/pagination-component";
-import {PaginationDetails} from "@/app/models/interfaces/pagination-details.interface";
-import {IListing} from "@/app/models/interfaces/listing.interface";
-import {IProject} from "@/app/models/interfaces/project.interface";
-
-
-
 
 
 export default function Listings() {
@@ -160,7 +158,7 @@ export default function Listings() {
           </Text>
         )}
       </Box>
-      {listings.length > 0 ? (
+      {listings.length > 0 && !loading ? (
         <>
         <Box
           w={"100%"}

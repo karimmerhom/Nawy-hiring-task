@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, HStack, Text } from "@chakra-ui/react";
-
 import {PaginationDetails} from "@/app/models/interfaces/pagination-details.interface";
 
 
