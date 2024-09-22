@@ -12,6 +12,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+       <head>
+        <title>Nawy</title>
+      </head>
       <body>
         <ToastContainer
           position="bottom-center"

@@ -14,11 +14,12 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  console.log(error.message)
   return (
     <Container display={'flex'} justifyContent={'center'} textAlign={'center'} alignItems="center" h={500} py={10}>
       <Box>
         <Heading as="h1" size="2xl" mb={4}>
-          {error.message}
+        Failed to Load Ad details
         </Heading>
         <Text fontSize="lg" mb={6}>
             An error occurred sorry for the inconvenience please try again later.
