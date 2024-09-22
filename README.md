@@ -18,6 +18,9 @@ This repository contains an apartment listing application built as part of a hir
 - API endpoints for listing apartments and retrieving apartment details.
 - API for fetching options like projects and amenities if needed.
 
+## API Documentation
+The application includes Swagger for API documentation. You can access it at the following URL once the backend server is running: http://localhost:5000/api-docs/#/Listings
+
 ## Getting Started
 
 To run the application locally without using Docker, Make sure docker eniroment varibale is set to FALSE in frontend.
