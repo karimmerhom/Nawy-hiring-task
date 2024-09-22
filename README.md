@@ -27,5 +27,4 @@ Once you have Docker set up, you can run the application with the following comm
 ```bash
 docker-compose up --build
 
-
-To run the application locally without using Docker, Make sure docker eniroment varibale is set to FALSE in frontend.
+###To run the application locally without using Docker, Make sure docker eniroment varibale is set to FALSE in frontend.
